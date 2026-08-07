@@ -71,8 +71,8 @@ Ver `.env.example`. Resumen:
 | `DATABASE_URL` | Cadena *pooled* de Neon |
 | `BLOB_READ_WRITE_TOKEN` | Token de Vercel Blob |
 | `AUTH_SECRET` | Secreto de Auth.js (`npx auth secret`) |
-| `EMAIL_SERVER` | SMTP de Brevo (`smtp://login:smtp_key@smtp-relay.brevo.com:587`) |
-| `EMAIL_FROM` | Remitente verificado en Brevo |
+| `BREVO_API_KEY` | API key de Brevo (`xkeysib-…`); el magic link se envía por su API |
+| `EMAIL_FROM` | Remitente **verificado** en Brevo (dominio o email) |
 | `ADMIN_EMAIL` | Único email autorizado a `/admin` (el de Antonio) |
 
 ### Base de datos
@@ -91,7 +91,7 @@ consola SQL de Neon.
 1. Importa el repo en Vercel.
 2. Añade el store **Neon** y el store **Blob** desde la pestaña *Storage* (Vercel
    inyecta `DATABASE_URL` y `BLOB_READ_WRITE_TOKEN`).
-3. Añade `AUTH_SECRET`, `EMAIL_SERVER`, `EMAIL_FROM` y `ADMIN_EMAIL` como variables.
+3. Añade `AUTH_SECRET`, `BREVO_API_KEY`, `EMAIL_FROM` y `ADMIN_EMAIL` como variables.
 4. Ejecuta `sql/schema.sql` contra la base de datos.
 5. Deploy. El panel queda en `/admin`.
 
