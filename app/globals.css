@@ -32,7 +32,25 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .navlinks{display:flex;gap:26px;font-size:14px;color:var(--muted)}
 .navlinks a{text-decoration:none;transition:color .2s}
 .navlinks a:hover{color:var(--gold-soft)}
-@media(max-width:720px){.navlinks{display:none}}
+
+/* Hamburguesa (solo móvil) */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin:-8px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--ink);border-radius:2px;transition:.25s}
+.hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;overflow:hidden}
+
+@media(max-width:720px){
+  .navlinks{display:none}
+  .hamburger{display:flex}
+  .mobile-menu{display:block;max-height:0;transition:max-height .3s ease;
+    background:rgba(12,11,16,.97);border-bottom:1px solid var(--line)}
+  .mobile-menu.open{max-height:360px}
+  .mobile-menu a{display:block;padding:15px 24px;color:var(--muted);text-decoration:none;font-size:16px;border-top:1px solid var(--line)}
+  .mobile-menu a:first-child{border-top:none}
+  .mobile-menu a:hover,.mobile-menu a:active{color:var(--gold-soft)}
+}
 
 /* HERO */
 header.hero{padding:90px 0 70px;position:relative;overflow:hidden}

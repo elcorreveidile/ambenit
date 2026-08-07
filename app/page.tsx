@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { site } from "@/lib/site-config";
 import GaleriaPublica from "@/components/GaleriaPublica";
+import Nav from "@/components/Nav";
 import Firma from "@/components/Firma";
 import ScrollUp from "@/components/ScrollUp";
 
@@ -10,21 +11,7 @@ export default function Home() {
   return (
     <>
       {/* NAV */}
-      <nav>
-        <div className="wrap">
-          <div className="brand">
-            {site.marca}
-            <small>{site.tagline}</small>
-          </div>
-          <div className="navlinks">
-            <a href="#fotografo">El fotógrafo</a>
-            <a href="#galeria">Galería</a>
-            <a href="#marco">Marco</a>
-            <a href="#cuenta">La cuenta</a>
-            <a href="#contacto">Contacto</a>
-          </div>
-        </div>
-      </nav>
+      <Nav />
 
       {/* HERO */}
       <header className="hero">
