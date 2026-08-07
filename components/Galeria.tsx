@@ -15,6 +15,52 @@ function nombreDe(src: string) {
   }
 }
 
+/**
+ * Descarga la foto con la firma «ambenit» incrustada (sin tocar el original
+ * guardado: la marca se añade al vuelo aquí, en el navegador).
+ */
+async function descargarConMarca(src: string, nombre: string) {
+  try {
+    const res = await fetch(src, { mode: "cors" });
+    const blob = await res.blob();
+    const bmp = await createImageBitmap(blob);
+    const c = document.createElement("canvas");
+    c.width = bmp.width;
+    c.height = bmp.height;
+    const ctx = c.getContext("2d");
+    if (!ctx) throw new Error("canvas");
+    ctx.drawImage(bmp, 0, 0);
+
+    const s = Math.max(16, Math.round(Math.min(c.width, c.height) * 0.035));
+    const pad = Math.round(s * 0.8);
+    ctx.font = `italic 600 ${s}px Georgia, "Times New Roman", serif`;
+    ctx.textBaseline = "bottom";
+    const text = "ambenit";
+    const w = ctx.measureText(text).width;
+    ctx.shadowColor = "rgba(0,0,0,0.55)";
+    ctx.shadowBlur = s * 0.3;
+    ctx.shadowOffsetY = 1;
+    ctx.fillStyle = "rgba(233,197,131,0.92)";
+    ctx.fillText(text, c.width - w - pad, c.height - pad);
+
+    c.toBlob(
+      (b) => {
+        if (!b) return;
+        const url = URL.createObjectURL(b);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `${nombre.replace(/\.[^.]+$/, "")}-ambenit.jpg`;
+        a.click();
+        URL.revokeObjectURL(url);
+      },
+      "image/jpeg",
+      0.95,
+    );
+  } catch {
+    window.open(src, "_blank");
+  }
+}
+
 export default function Galeria({
   photos,
   objetivo,
@@ -77,19 +123,18 @@ export default function Galeria({
               sizes="(max-width:720px) 33vw, 160px"
               style={{ objectFit: "cover" }}
             />
+            <span className="wm" aria-hidden="true">ambenit</span>
             <div className="overlay">
               <button className="ob" onClick={() => enmarcar(f)}>
                 ▣ Enmarcar
               </button>
-              <a
+              <button
                 className="ob"
-                href={f.src}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Ver / descargar el original"
+                onClick={() => descargarConMarca(f.src, nombreDe(f.src))}
+                title="Descargar con la firma ambenit"
               >
-                ↓ original
-              </a>
+                ↓ descargar
+              </button>
             </div>
           </div>
         ))}

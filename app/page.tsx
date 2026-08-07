@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { site } from "@/lib/site-config";
 import GaleriaPublica from "@/components/GaleriaPublica";
+import Firma from "@/components/Firma";
+import ScrollUp from "@/components/ScrollUp";
 
 export default function Home() {
   const t = site.trueque;
@@ -302,8 +304,11 @@ export default function Home() {
             leyendo la letra pequeña, ya sabes de dónde te viene el ojo para el
             detalle. 📸
           </p>
+          <Firma />
         </div>
       </footer>
+
+      <ScrollUp />
     </>
   );
 }

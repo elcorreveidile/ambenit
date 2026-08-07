@@ -183,6 +183,27 @@ footer .wink{margin-top:18px;font-size:13px;color:var(--faint);max-width:520px;m
 
 ::selection{background:var(--gold);color:#231704}
 
+/* FIRMA (crédito Por 2 Duros) + fogonazo de flash */
+.firma{margin-top:16px}
+.firma .credit{font-size:13px;color:var(--faint)}
+.firma .credit a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.firma .credit a:hover{color:var(--gold-soft);border-color:var(--gold)}
+.flashbtn{background:none;border:none;cursor:pointer;font-size:15px;margin-left:8px;padding:2px;line-height:1;
+  transition:transform .15s}
+.flashbtn:hover{transform:scale(1.18)}
+.firma-frase{margin-top:8px;font-family:var(--font-caveat);color:var(--gold-soft);font-size:20px;line-height:1;min-height:22px}
+.flash{position:fixed;inset:0;z-index:9999;background:#fff;pointer-events:none;opacity:0;animation:fogonazo .45s ease-out}
+@keyframes fogonazo{0%{opacity:0}10%{opacity:.85}100%{opacity:0}}
+
+/* Volver arriba */
+.scrollup{position:fixed;right:20px;bottom:20px;z-index:60;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(25,23,34,.9);color:var(--gold-soft);font-size:20px;cursor:pointer;
+  opacity:0;transform:translateY(10px);pointer-events:none;transition:.25s;backdrop-filter:blur(6px)}
+.scrollup.show{opacity:1;transform:none;pointer-events:auto}
+.scrollup:hover{border-color:var(--gold);background:var(--panel)}
+
+@media (prefers-reduced-motion:reduce){.flash{animation:none;opacity:0 !important}}
+
 /* GALERÍA — overlay, descargar original y marco decorativo */
 .tile .overlay{position:absolute;left:0;right:0;bottom:0;display:flex;gap:6px;padding:6px;
     background:linear-gradient(180deg,transparent,rgba(12,11,16,.82));opacity:0;transition:.2s;z-index:3}
@@ -193,6 +214,9 @@ footer .wink{margin-top:18px;font-size:13px;color:var(--faint);max-width:520px;m
 .tile .dl{position:absolute;left:6px;bottom:6px;font-size:11px;color:var(--ink);text-decoration:none;
     background:rgba(12,11,16,.72);border:1px solid var(--line);border-radius:8px;padding:4px 8px;opacity:0;transition:.2s;z-index:2}
 .tile:hover .dl{opacity:1}
+.tile .wm{position:absolute;right:8px;bottom:7px;z-index:2;font-family:var(--font-fraunces);font-style:italic;
+    font-weight:600;font-size:13px;color:rgba(233,197,131,.9);text-shadow:0 1px 3px rgba(0,0,0,.65);
+    pointer-events:none;letter-spacing:.02em}
 .grid.conmarco .tile{background:#f4f1e9}
 .grid.conmarco .tile::after{content:"";position:absolute;inset:0;z-index:4;pointer-events:none;
     border:12px solid #f4f1e9;border-radius:12px;box-shadow:inset 0 0 0 1px #cfc7b4}

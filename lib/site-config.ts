@@ -27,6 +27,12 @@ export const site = {
     instagram: "@ambenit", // TODO placeholder — poner el handle real
   },
 
+  // Crédito de desarrollo (la agencia del tito).
+  desarrollo: {
+    por: "Por 2 Duros",
+    url: "https://por2duros.com",
+  },
+
   // Objetivo simbólico de la galería (el "pack" de la broma)
   galeria: {
     objetivo: 151,
