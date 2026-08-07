@@ -1,0 +1,138 @@
+"use client";
+
+import { useState, type ChangeEvent } from "react";
+import Image from "next/image";
+import Framer from "./Framer";
+
+export type Foto = { id: string; src: string; alt: string };
+
+function nombreDe(src: string) {
+  try {
+    const last = src.split("?")[0].split("/").pop() || "foto";
+    return decodeURIComponent(last);
+  } catch {
+    return "foto";
+  }
+}
+
+export default function Galeria({
+  photos,
+  objetivo,
+  usandoSemilla,
+}: {
+  photos: Foto[];
+  objetivo: number;
+  usandoSemilla: boolean;
+}) {
+  const [conMarco, setConMarco] = useState(false);
+  const [sel, setSel] = useState<string | null>(photos[0]?.src ?? null);
+  const [selName, setSelName] = useState<string>(
+    photos[0] ? nombreDe(photos[0].src) : "foto",
+  );
+
+  const n = photos.length;
+  const pct = Math.min(100, (n / objetivo) * 100);
+
+  function enmarcar(f: Foto) {
+    setSel(f.src);
+    setSelName(nombreDe(f.src));
+    document.getElementById("marco")?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  function subirPropia(e: ChangeEvent<HTMLInputElement>) {
+    const f = e.target.files?.[0];
+    if (!f) return;
+    setSel(URL.createObjectURL(f));
+    setSelName(f.name);
+    document.getElementById("marco")?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  return (
+    <>
+      <div className="meter">
+        <span className="count">
+          <b>{n}</b> / {objetivo} fotos
+        </span>
+        <div className="bar">
+          <i style={{ width: `${pct}%` }} />
+        </div>
+        <div className="tools">
+          <button
+            className="chip"
+            aria-pressed={conMarco}
+            onClick={() => setConMarco((v) => !v)}
+          >
+            {conMarco ? "▣ con marco" : "▢ ver con marco"}
+          </button>
+        </div>
+      </div>
+
+      <div className={`grid${conMarco ? " conmarco" : ""}`}>
+        {photos.map((f) => (
+          <div className="tile" key={f.id}>
+            <Image
+              src={f.src}
+              alt={f.alt}
+              fill
+              sizes="(max-width:720px) 33vw, 160px"
+              style={{ objectFit: "cover" }}
+            />
+            <div className="overlay">
+              <button className="ob" onClick={() => enmarcar(f)}>
+                ▣ Enmarcar
+              </button>
+              <a
+                className="ob"
+                href={f.src}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Ver / descargar el original"
+              >
+                ↓ original
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {n === 0 && (
+        <p className="empty-note">
+          Aún no hay fotos publicadas. En cuanto Antonio suba su selección, aparece aquí.
+        </p>
+      )}
+      {usandoSemilla && n > 0 && (
+        <p className="empty-note">
+          Muestra de la sesión. La selección completa se publica desde el panel.
+        </p>
+      )}
+
+      {/* ESTUDIO DE MARCO (público) */}
+      <div id="marco" className="marco-studio">
+        <div className="eyebrow" style={{ marginTop: 40 }}>
+          El marco
+        </div>
+        <h2>
+          Ponle <em>marco</em> a la foto
+        </h2>
+        <p className="sub">
+          Elige una foto de arriba (botón «Enmarcar») o sube la tuya, prueba estilos
+          y descárgala lista para enmarcar o entregar. El original nunca se toca.
+        </p>
+
+        <div className="marco-own">
+          <label className="chip">
+            ↑ Subir mi foto
+            <input
+              type="file"
+              accept="image/*"
+              onChange={subirPropia}
+              style={{ display: "none" }}
+            />
+          </label>
+        </div>
+
+        <Framer src={sel} name={selName} />
+      </div>
+    </>
+  );
+}
