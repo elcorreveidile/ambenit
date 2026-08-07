@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { AuthError } from "next-auth";
 import { isAdmin, signIn, signOut } from "@/lib/auth";
 import { isDbConfigured, listPhotos } from "@/lib/db";
 import { site } from "@/lib/site-config";
@@ -73,7 +75,15 @@ export default async function AdminPage({
           action={async (formData: FormData) => {
             "use server";
             const email = String(formData.get("email") || "");
-            await signIn("nodemailer", { email, redirectTo: "/admin" });
+            try {
+              // Envía el magic link SIN auto-redirect de Auth.js.
+              await signIn("nodemailer", { email, redirect: false });
+            } catch (error) {
+              if (error instanceof AuthError) redirect("/admin?error=1");
+              throw error;
+            }
+            // Redirección manual a la pantalla de "revisa tu correo".
+            redirect("/admin?check=1");
           }}
         >
           <input type="email" name="email" placeholder="tu@email.com" required />

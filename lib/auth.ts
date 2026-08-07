@@ -57,9 +57,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth(() => {
       }),
     ],
     pages: {
+      // Sin verifyRequest/error personalizados: el flujo lo controla la server
+      // action de /admin con redirect manual (evita el POST a verify-request).
       signIn: "/admin",
-      verifyRequest: "/admin?check=1",
-      error: "/admin?error=1",
     },
     callbacks: {
       // Allowlist: solo Antonio (ADMIN_EMAIL) puede iniciar sesión.
