@@ -27,6 +27,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.dominio),
   title: titulo,
   description: descripcion,
+  // La imagen de compartir la aporta app/opengraph-image.jpg (y twitter-image.jpg).
   openGraph: {
     title: titulo,
     description: descripcion,
@@ -34,7 +35,11 @@ export const metadata: Metadata = {
     siteName: "ambenit",
     locale: "es_ES",
     type: "website",
-    images: ["/sesion-1.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: titulo,
+    description: descripcion,
   },
 };
 

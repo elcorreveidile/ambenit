@@ -29,7 +29,7 @@ export const site = {
 
   // Objetivo simbólico de la galería (el "pack" de la broma)
   galeria: {
-    objetivo: 138,
+    objetivo: 151,
     // Fotos "semilla" reales servidas desde /public. Se muestran cuando la base
     // de datos aún no está configurada o está vacía, para que el sitio se vea vivo.
     // Cuando Antonio suba fotos desde /admin, mandan las de la base de datos.
@@ -39,13 +39,14 @@ export const site = {
       { src: "/sesion-3.jpg", alt: "Recital nocturno — ambenit" },
       { src: "/sesion-4.jpg", alt: "Recital nocturno — ambenit" },
       { src: "/sesion-5.jpg", alt: "Recital nocturno — ambenit" },
+      { src: "/sesion-6.jpg", alt: "Recital nocturno — ambenit" },
     ],
   },
 
   // Cifras del hero
   stats: [
     { valor: "277", etiqueta: "disparos esa noche" },
-    { valor: "138", etiqueta: "fotos que sobreviven" },
+    { valor: "151", etiqueta: "fotos que sobreviven" },
     { valor: "1", etiqueta: "tito con buen ojo" },
   ],
 
@@ -60,7 +61,7 @@ export const site = {
       ["En escena", "Javier Benítez y Alfonso Salazar (poesía)"],
       ["Música", "Juan Pinilla (cante) · David Caro (guitarra)"],
       ["Luz", "Natural nocturna, alto contraste"],
-      ["Selección", "277 disparos → 138 elegidas a mano"],
+      ["Selección", "277 disparos → 151 elegidas a mano"],
     ] as const,
   },
 
@@ -71,7 +72,7 @@ export const site = {
       titulo: "Lo que te pago yo",
       etiqueta: "tito → antonio",
       lineas: [
-        { concepto: "Pack «Recital nocturno»", detalle: "138 fotos seleccionadas y editadas.", importe: "30 €" },
+        { concepto: "Pack «Recital nocturno»", detalle: "151 fotos seleccionadas y editadas.", importe: "30 €" },
         { concepto: "Presupuesto previo", detalle: "No lo hubo. Sorpresa a los dos audios.", importe: "—", libre: true },
       ],
       total: "30 €",
@@ -83,7 +84,7 @@ export const site = {
       lineas: [
         { concepto: "Identidad «ambenit»", detalle: "Logo, tipografías y color de fotógrafo.", importe: "90 €" },
         { concepto: "Desarrollo web a medida", detalle: "Una página, responsive, hecha a mano.", importe: "120 €" },
-        { concepto: "Galería con subida de fotos", detalle: "Para tus 138, con contador y todo.", importe: "60 €" },
+        { concepto: "Galería con subida de fotos", detalle: "Para tus 151, con contador y todo.", importe: "60 €" },
         { concepto: "Suplemento «yo tampoco avisé»", detalle: "Justo. Mismo juego.", importe: "30 €" },
       ],
       total: "300 €",

@@ -26,6 +26,7 @@ export default function Home() {
 
       {/* HERO */}
       <header className="hero">
+        <div className="hero-eyes" aria-hidden="true" />
         <div className="wrap">
           <span className="kicker">◍ recitales · directos · luz de noche</span>
           <h1>
@@ -111,7 +112,7 @@ export default function Home() {
           </h2>
           <p className="sub">
             De noche, que es cuando la cosa se pone interesante. 277 disparos,
-            revisados uno a uno hasta dejar los 138 buenos.
+            revisados uno a uno hasta dejar los 151 buenos.
           </p>
 
           <div className="session">
@@ -241,7 +242,7 @@ export default function Home() {
 
           <p className="fineprint">
             <b>Letra pequeña:</b> trueque válido entre tito y sobrino. Si
-            prefieres, cambiamos <b>las 138 fotos por esta web</b> y nadie paga
+            prefieres, cambiamos <b>las 151 fotos por esta web</b> y nadie paga
             nada (opción recomendada). El saldo incluye un{" "}
             <b>recargo simbólico por no presupuestar</b> —el mismo detalle que
             tuviste tú— y <b>0 € de rencor</b>. Reclamaciones, en el próximo
@@ -297,7 +298,7 @@ export default function Home() {
           <div>Fotografía nocturna · {site.fotografo.nombre}</div>
           <p className="wink">
             Web preparada con mucho cariño (y algo de guasa) por el tito, a cambio
-            de 138 fotos que nadie había presupuestado. Si has llegado hasta aquí
+            de 151 fotos que nadie había presupuestado. Si has llegado hasta aquí
             leyendo la letra pequeña, ya sabes de dónde te viene el ojo para el
             detalle. 📸
           </p>

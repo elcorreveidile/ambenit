@@ -120,8 +120,8 @@ export default function Galeria({
         </p>
 
         <div className="marco-own">
-          <label className="chip">
-            ↑ Subir mi foto
+          <label className="btn btn-ghost upload-btn">
+            <span className="ico">↑</span> Subir mi foto
             <input
               type="file"
               accept="image/*"
@@ -129,6 +129,7 @@ export default function Galeria({
               style={{ display: "none" }}
             />
           </label>
+          <span className="upload-hint">o pulsa «Enmarcar» en una foto de arriba</span>
         </div>
 
         <Framer src={sel} name={selName} />

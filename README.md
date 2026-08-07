@@ -107,6 +107,8 @@ buzón o redirección de `hola@ambenit.com`.
 
 - La web pública lee las fotos de Neon. Si no hay ninguna (o aún no hay DB), muestra
   las **fotos semilla** de `public/` para que nunca se vea vacía.
-- Antonio entra en `/admin` con su email (magic link), sube fotos (se reducen en el
-  navegador, se guardan en Blob y sus metadatos en Neon) y aparecen al momento en la
-  galería pública. Puede borrarlas desde el mismo panel.
+- Antonio entra en `/admin` con su email (magic link) y sube fotos: **en calidad
+  original** (directo a Blob, sin recomprimir), **el lote entero de golpe** o un
+  **.zip** con todas (se descomprime en el navegador), subiéndose **4 en paralelo**.
+  Los metadatos van a Neon y aparecen al momento en la galería pública. Puede borrarlas
+  desde el mismo panel, y cada foto tiene enlace "↓ original".
